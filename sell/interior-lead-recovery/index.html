@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Interior Lead Recovery — Missed-call text-back for Interior BC trades</title>
+  <meta name="description" content="When your van is on a job, missed calls become someone else’s booked work. We install missed-call text-back + booking for Interior BC plumbers, HVAC, and home-service shops." />
+  <style>
+    :root {
+      --bg: #0f1419;
+      --card: #1a222c;
+      --text: #f2f5f8;
+      --muted: #9aa7b5;
+      --accent: #3d9cf0;
+      --accent2: #2ecc71;
+      --border: #2a3542;
+      --warn: #f0c14b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+    a { color: var(--accent); }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 1.5rem 1.25rem 3rem; }
+    header { margin-bottom: 1.75rem; }
+    .badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      border: 1px solid #2a5a40;
+      background: #14261c;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      margin-bottom: 0.75rem;
+    }
+    h1 { font-size: 1.75rem; line-height: 1.25; margin: 0 0 0.5rem; }
+    .lead { color: var(--muted); font-size: 1.05rem; margin: 0; }
+    section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.35rem;
+      margin-bottom: 1.1rem;
+    }
+    h2 { font-size: 1.15rem; margin: 0 0 0.75rem; }
+    ol, ul { margin: 0.4rem 0 0; padding-left: 1.25rem; }
+    li { margin-bottom: 0.4rem; }
+    .prices { display: grid; gap: 0.75rem; }
+    @media (min-width: 560px) {
+      .prices { grid-template-columns: repeat(3, 1fr); }
+    }
+    .price {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+      background: #141b23;
+    }
+    .price.best { border-color: var(--accent2); }
+    .price h3 { margin: 0 0 0.35rem; font-size: 0.95rem; color: var(--muted); font-weight: 600; }
+    .price .amt { font-size: 1.45rem; font-weight: 700; margin: 0 0 0.35rem; }
+    .price p { margin: 0; font-size: 0.9rem; color: var(--muted); }
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      color: var(--accent2);
+      margin-bottom: 0.35rem;
+    }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.85rem; }
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      padding: 0.7rem 1.1rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .btn-primary { background: var(--accent); color: #041018; }
+    .btn-secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn-green { background: var(--accent2); color: #062012; }
+    .demo-frame {
+      width: 100%;
+      min-height: 520px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #000;
+    }
+    .note {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-top: 0.6rem;
+    }
+    .fact {
+      border-left: 3px solid var(--warn);
+      padding-left: 0.85rem;
+      margin: 0.75rem 0;
+      color: var(--text);
+    }
+    .fact strong { color: var(--warn); }
+    code {
+      background: #0c1015;
+      padding: 0.1rem 0.35rem;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+    label { display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 0.25rem; }
+    input, textarea {
+      width: 100%;
+      padding: 0.6rem 0.7rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #0c1015;
+      color: var(--text);
+      font: inherit;
+      margin-bottom: 0.75rem;
+    }
+    #book-result {
+      display: none;
+      margin-top: 0.75rem;
+      padding: 0.85rem;
+      background: #14261c;
+      border: 1px solid #2a5a40;
+      border-radius: 8px;
+      font-size: 0.95rem;
+    }
+    footer {
+      margin-top: 1.5rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="badge">Interior BC · Home-service shops</div>
+      <h1>Missed calls shouldn’t become someone else’s jobs</h1>
+      <p class="lead">
+        <strong>Interior Lead Recovery</strong> installs a simple missed-call text-back
+        for plumbers, HVAC, electrical, and similar shops. When a call goes unanswered,
+        the caller gets a friendly text with a booking link — usually in under 30 seconds —
+        and you get a note so the lead isn’t lost.
+      </p>
+    </header>
+
+    <section>
+      <h2>The problem (plain English)</h2>
+      <p>
+        You’re on a job. The phone rings. You can’t answer. That person often dials the next
+        shop on Google. By the time you listen to voicemail, the work is gone.
+      </p>
+      <p style="margin-bottom:0">
+        This is for <strong>your business phone</strong> — people who already called you.
+        Not cold spam. Not septic ads. Not medical claims.
+      </p>
+    </section>
+
+    <section>
+      <h2>What we set up</h2>
+      <ol>
+        <li>Missed / unanswered call is detected</li>
+        <li>Caller gets a short text with who you are + a book-a-time link + STOP to opt out</li>
+        <li>Contact + note lands in a simple CRM list so you can follow up</li>
+        <li>You get a short walkthrough so you know how to reply</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Prices (CAD)</h2>
+      <div class="prices">
+        <div class="price">
+          <h3>Setup</h3>
+          <p class="amt">CA$497</p>
+          <p>One-time install, scripts, booking link, CRM note, 7-day support, 15-min walkthrough.</p>
+        </div>
+        <div class="price">
+          <h3>Monthly</h3>
+          <p class="amt">CA$297<span style="font-size:0.9rem;font-weight:500">/mo</span></p>
+          <p>Keep it running: monitoring, script tweaks, monthly recovered-lead summary.</p>
+        </div>
+        <div class="price best">
+          <span class="tag">Best for a first try</span>
+          <h3>Prepaid pilot</h3>
+          <p class="amt">CA$797</p>
+          <p>Setup waived + 3 months of the retainer prepaid.</p>
+        </div>
+      </div>
+      <p class="note">Estimates only on “how many jobs you recover” — your numbers will differ. No guarantees of job count.</p>
+    </section>
+
+    <section>
+      <h2>See it work (demo)</h2>
+      <p>Press “Simulate missed call” in the demo below. No real texts are sent.</p>
+      <iframe
+        class="demo-frame"
+        title="Interior Lead Recovery demo"
+        src="https://properseptic-stack.github.io/quelvora-guides/demo/interior-lead-recovery/"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+      <p class="note">
+        If the embed doesn’t load on your phone,
+        <a href="https://properseptic-stack.github.io/quelvora-guides/demo/interior-lead-recovery/" target="_blank" rel="noopener">open the demo in a new tab</a>.
+      </p>
+    </section>
+
+    <section id="pay">
+      <h2>Pay by Interac e-Transfer</h2>
+      <div class="fact">
+        <strong>FACT (ops memory):</strong> Send Interac e-Transfer to
+        <code>properseptic@gmail.com</code> — Bryan’s known Google address for this venture.
+      </div>
+      <ol>
+        <li>Open your bank’s Interac e-Transfer</li>
+        <li>Send to <strong>properseptic@gmail.com</strong></li>
+        <li>In the message / note field write: <strong>ILR Setup</strong> (or <strong>ILR Prepaid</strong> / <strong>ILR Monthly</strong>)</li>
+        <li>Amount: <strong>CA$497</strong>, <strong>CA$797</strong>, or <strong>CA$297</strong> as agreed</li>
+        <li>Text or email Bryan after you send so setup can start</li>
+      </ol>
+      <p class="note">Do not put card details on this page. Interac only for now.</p>
+    </section>
+
+    <section id="book">
+      <h2>Book a free 5-min demo</h2>
+      <p>No automatic email is sent from this page. Pick one:</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="mailto:properseptic@gmail.com?subject=ILR%205-min%20demo&body=Hi%20Bryan%2C%0A%0AI%27d%20like%20a%20free%205-minute%20demo%20of%20Interior%20Lead%20Recovery.%0A%0ABusiness%3A%20%0ACity%3A%20%0ABest%20time%20to%20call%3A%20%0A">
+          Open email to book
+        </a>
+        <a class="btn btn-secondary" href="#pay">See Interac instructions</a>
+      </div>
+
+      <p style="margin-top:1.25rem;margin-bottom:0.5rem"><strong>Or fill this — it only builds a mailto for you to send:</strong></p>
+      <form id="demo-form" action="#" method="get">
+        <label for="biz">Business name</label>
+        <input id="biz" name="biz" type="text" autocomplete="organization" placeholder="e.g. Summit Plumbing" />
+        <label for="city">City</label>
+        <input id="city" name="city" type="text" autocomplete="address-level2" placeholder="e.g. Vernon" />
+        <label for="phone">Your phone (optional)</label>
+        <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="250-…" />
+        <label for="when">Best time for a 5-min call</label>
+        <input id="when" name="when" type="text" placeholder="e.g. Tue after 4pm" />
+        <label for="note">Anything else</label>
+        <textarea id="note" name="note" rows="3" placeholder="Optional"></textarea>
+        <button type="submit" class="btn btn-green">Build email — you send it</button>
+      </form>
+      <div id="book-result" role="status"></div>
+      <p class="note">This form does not email anyone by itself. It opens your mail app with a draft, or shows you the text to copy.</p>
+    </section>
+
+    <section>
+      <h2>What’s not included</h2>
+      <ul>
+        <li>Google Ads management</li>
+        <li>AI voice receptionist</li>
+        <li>Cold texting people who didn’t call you</li>
+        <li>Septic / medical marketing</li>
+      </ul>
+    </section>
+
+    <footer>
+      Interior Lead Recovery · Salmon Arm / Interior BC · Sales page only — no card form · No cold SMS
+    </footer>
+  </div>
+  <script>
+    (function () {
+      var form = document.getElementById('demo-form');
+      var out = document.getElementById('book-result');
+      if (!form) return;
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var biz = (document.getElementById('biz').value || '').trim();
+        var city = (document.getElementById('city').value || '').trim();
+        var phone = (document.getElementById('phone').value || '').trim();
+        var when = (document.getElementById('when').value || '').trim();
+        var note = (document.getElementById('note').value || '').trim();
+        var body =
+          'Hi Bryan,\n\nI\'d like a free 5-minute demo of Interior Lead Recovery.\n\n' +
+          'Business: ' + (biz || '(not filled)') + '\n' +
+          'City: ' + (city || '(not filled)') + '\n' +
+          'Phone: ' + (phone || '(not filled)') + '\n' +
+          'Best time: ' + (when || '(not filled)') + '\n' +
+          (note ? 'Note: ' + note + '\n' : '') +
+          '\nThanks';
+        var mailto =
+          'mailto:properseptic@gmail.com?subject=' +
+          encodeURIComponent('ILR 5-min demo') +
+          '&body=' +
+          encodeURIComponent(body);
+        out.style.display = 'block';
+        out.innerHTML =
+          '<p><strong>Ready.</strong> Nothing was emailed yet.</p>' +
+          '<p><a class="btn btn-primary" href="' + mailto + '">Open this draft in your mail app</a></p>' +
+          '<p class="note">If your phone blocks mailto, copy-paste to properseptic@gmail.com:</p>' +
+          '<pre style="white-space:pre-wrap;font-size:0.85rem;background:#0c1015;padding:0.75rem;border-radius:8px;">' +
+          body.replace(/</g, '&lt;') +
+          '</pre>';
+        try {
+          window.location.href = mailto;
+        } catch (err) { /* ignore */ }
+      });
+    })();
+  </script>
+</body>
+</html>
