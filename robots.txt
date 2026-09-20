@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# Sitemap can be added after GitHub Pages goes live:
-# Sitemap: https://USERNAME.github.io/quelvora-affiliate-site/sitemap.xml
+Sitemap: https://properseptic-stack.github.io/quelvora-guides/sitemap.xml
