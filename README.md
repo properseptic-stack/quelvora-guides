@@ -5,7 +5,7 @@ Minimal static site for **Bryan Bergen** (Salmon Arm, BC / properseptic@gmail.co
 Purpose:
 
 - Owned **Website** property for Impact.com Partner verification
-- Demand Scout / Amazon.ca Associates (`quelvora-20`) content home
+- Guides home (Associates content moved to canada-restock-picks)
 - Practical BC septic + rural + landlord guides (not social-first)
 
 **Do not** create new Etsy products from this repo. Quelvora Etsy sales-hold remains.
@@ -84,8 +84,8 @@ When ready: Pages → Custom domain → add `CNAME` / DNS as GitHub documents.
 
 ## Affiliate rules (Amazon.ca)
 
-- Store ID: **quelvora-20** (LIVE)
-- Example product links already use `?tag=quelvora-20` and `rel="sponsored"`
+- Associates store ID: see canada-restock-picks (not this repo)
+- Product links on this repo no longer carry Associates tags
 - **Bryan per-message sign-off** before publishing any new affiliate post / paid promo
 - Prefer education-first copy; never spam dumps of ASIN lists
 

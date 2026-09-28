@@ -2,7 +2,7 @@
 
 Owner: **Bryan Bergen** · Salmon Arm, BC · properseptic@gmail.com  
 Site: Quelvora Guides (this static folder)  
-Amazon.ca Associates: **quelvora-20** (LIVE; tax done)  
+Amazon.ca Associates: hosted on separate clean property `canada-restock-picks` (not this repo)
 Etsy: Quelvora shop exists but Impact will **not** unlock “Next” on an unverified Etsy URL — hence this owned site.
 
 ## What Impact needs
